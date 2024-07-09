@@ -1834,7 +1834,7 @@ with col2:
         
                 loc_ELV_High = (check_zero_indexes(n_beds_ELV_total_list))
                 loc_ELV_Low = (check_zero_indexes(n_beds_ELV_total_list))
-            Check_eff_beds_with_nurses(n_patients_per_nurse)
+            Check_eff_beds_with_nurses(n_patiënts_per_nurse)
             check_balanced_system(int(n_loc))  
             perc_compl = 0
             
