@@ -534,9 +534,9 @@ with col2:
             priority = input.loc[loop_nr,'Priority']
             Project = ''#input.loc[loop_nr,'Project']
             Preference = input.loc[loop_nr,'preference'] #Pref = pref_model, FCFS = FCFS, NO = Only fav Locatie
-            if Preference = 'First Come First Serve':
+            if Preference == 'First Come First Serve':
                 Preference = 'FCFS'
-            elif Preference = 'Allocatie op voorkeur':
+            elif Preference == 'Allocatie op voorkeur':
                 Preference = 'NO'
             else:
                 Preference = 'Pref'
