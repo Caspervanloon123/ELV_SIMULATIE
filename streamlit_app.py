@@ -6503,7 +6503,7 @@ with col3:
 
         # Convert the inputs dictionary to a DataFrame
         df1 = df_tot
-        
+        df1.to_csv('output.csv', index=False)
         st_out = st.empty()
         sys.stdout = st_out
         st.header("Checks")
