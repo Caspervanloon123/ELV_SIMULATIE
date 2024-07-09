@@ -534,11 +534,11 @@ with col2:
             priority = input.loc[loop_nr,'Priority']
             Project = ''#input.loc[loop_nr,'Project']
             Preference = input.loc[loop_nr,'preference'] #Pref = pref_model, FCFS = FCFS, NO = Only fav Locatie
-            if Preference == 'First Come First Serve':
+            if Preference == "First Come First Serve":
                 Preference = 'FCFS'
-            elif Preference == 'Allocatie op voorkeur':
+            elif Preference == "Allocatie op voorkeur":
                 Preference = 'NO'
-            else:
+            elif Preference == "Allocatie op basis van een model":
                 Preference = 'Pref'
             n_patiënts_per_nurse = input.loc[loop_nr,'Maximaal aantal patiënten per verpleegkundige']
             max_wait_time_model = input.loc[loop_nr,'Maximaal aantal dagen wachten voor patiënt van voorkeur verandert (in allocatiemodel)']
