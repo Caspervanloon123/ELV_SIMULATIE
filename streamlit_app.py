@@ -1999,7 +1999,7 @@ with col2:
                     #                                 wait_list_2_TRW.append(target_client)
                     #                                 type_of_w2_TRW.append(next_event[4:7])
                                                 if next_event[4:12] == 'HOS_High'or next_event[4:11] == 'HOS_GRZ':
-                                                    client_dict[target_client]['journey'].append('Extra_Hosp_adm')#1
+                                                    client_dict[target_client]['journey'].append('extra_HOSP_adm')#1
                                                     client_dict[target_client]['j_times'].append(current_time)
             
                                             
@@ -2032,7 +2032,7 @@ with col2:
                                                 add_to_waiting_dict(w2_dict_TRW,target_client,current_time)
                 
                                             if next_event[4:12] == 'HOS_High'or next_event[4:11] == 'HOS_GRZ':
-                                                client_dict[target_client]['journey'].append('Extra_Hosp_adm')#1
+                                                client_dict[target_client]['journey'].append('extra_HOSP_adm')#1
                                                 client_dict[target_client]['j_times'].append(current_time)
             
                                             # als vanuit SEH misschien ziekenhuisopname
@@ -2101,13 +2101,13 @@ with col2:
                                                     else:#!@#$%
                                                         add_to_waiting_dict(w3_dict,target_client,current_time)
                                                         if next_event[4:12] == 'HOS_High':
-                                                            client_dict[target_client]['journey'].append('Extra_Hosp_adm')#1
+                                                            client_dict[target_client]['journey'].append('extra_HOSP_adm')#1
                                                             client_dict[target_client]['j_times'].append(current_time)
             #                                             wait_list_3.append(target_client)
                                                 elif Preference == 'NO' or Preference == 'Pref':
                                                     add_to_waiting_dict(w3_dict,target_client,current_time)
                                                     if next_event[4:12] == 'HOS_High'or next_event[4:11] == 'HOS_GRZ':
-                                                        client_dict[target_client]['journey'].append('Extra_Hosp_adm')#1
+                                                        client_dict[target_client]['journey'].append('extra_HOSP_adm')#1
                                                         client_dict[target_client]['j_times'].append(current_time)
         #                                             wait_list_3.append(target_client)
                                             else: #can go to ELV
@@ -2361,14 +2361,14 @@ with col2:
                                                         move_to_ELV_High(target_client,time_until_placement)
                                                     else:#27
                                                         if next_event[4:11] == 'HOS_GRZ':
-                                                            client_dict[target_client]['journey'].append('Extra_Hosp_adm')#1
+                                                            client_dict[target_client]['journey'].append('extra_HOSP_adm')#1
                                                             client_dict[target_client]['j_times'].append(current_time)
                                                             add_to_waiting_dict(w4_dict,target_client,current_time)
             #                                             
                                                 elif Preference == 'NO' or Preference == 'Pref':
                                                     add_to_waiting_dict(w4_dict,target_client,current_time)
                                                     if next_event[4:12] == 'HOS_High'or next_event[4:11] == 'HOS_GRZ':
-                                                        client_dict[target_client]['journey'].append('Extra_Hosp_adm')#1
+                                                        client_dict[target_client]['journey'].append('extra_HOSP_adm')#1
                                                         client_dict[target_client]['j_times'].append(current_time)
                                             else:#can go to ELV
                                                 time_until_placement = exp(adm_days)    
@@ -2574,7 +2574,7 @@ with col2:
                                         add_to_waiting_dict(w_tot_dict,target_client,current_time)
                                         #wait_list_Total.append(target_client)
                                         if next_event[4:12] == 'HOS_High'or next_event[4:11] == 'HOS_GRZ':
-                                            client_dict[target_client]['journey'].append('Extra_Hosp_adm')#1
+                                            client_dict[target_client]['journey'].append('extra_HOSP_adm')#1
                                             client_dict[target_client]['j_times'].append(current_time)
                                 elif Preference == 'NO' or Preference == 'Pref':
                                     if next_event[0:7] == 'arr_EMD':
@@ -2601,7 +2601,7 @@ with col2:
                                     else:
                                         add_to_waiting_dict(w_tot_dict,target_client,current_time)  
                                         if next_event[4:12] == 'HOS_High'or next_event[4:11] == 'HOS_GRZ':
-                                            client_dict[target_client]['journey'].append('Extra_Hosp_adm')#1
+                                            client_dict[target_client]['journey'].append('extra_HOSP_adm')#1
                                             client_dict[target_client]['j_times'].append(current_time)
                         elif Scen_NO_Sharing or Scen_part_bed_Share or Scen_shared_beds_Full:    
                             if next_event[4:11] == 'GPR_Low':
@@ -2734,7 +2734,7 @@ with col2:
                                                     elif next_event[4:12] == 'GPR_High' :
                                                         add_to_waiting_dict(w2_dict,target_client,current_time)
                                                     if next_event[4:12] == 'HOS_High'or next_event[4:11] == 'HOS_GRZ':
-                                                        client_dict[target_client]['journey'].append('Extra_Hosp_adm')#1
+                                                        client_dict[target_client]['journey'].append('extra_HOSP_adm')#1
                                                         client_dict[target_client]['j_times'].append(current_time)      
                                                     if next_event[0:7] == 'arr_EMD':
                                                         p_acc_opn = np.random.uniform(0,1)
@@ -2767,7 +2767,7 @@ with col2:
                                                 elif next_event[4:12] == 'GPR_High' :
                                                     add_to_waiting_dict(w2_dict,target_client,current_time)
                                                 if next_event[4:12] == 'HOS_High'or next_event[4:11] == 'HOS_GRZ':
-                                                    client_dict[target_client]['journey'].append('Extra_Hosp_adm')#1
+                                                    client_dict[target_client]['journey'].append('extra_HOSP_adm')#1
                                                     client_dict[target_client]['j_times'].append(current_time)         
                                                 if next_event[0:7] == 'arr_EMD':
                                                     p_acc_opn = np.random.uniform(0,1)
@@ -2862,13 +2862,13 @@ with col2:
                                                     else:#!@#$%
                                                         add_to_waiting_dict(w3_dict,target_client,current_time)
                                                         if next_event[4:12] == 'HOS_High':
-                                                            client_dict[target_client]['journey'].append('Extra_Hosp_adm')#1
+                                                            client_dict[target_client]['journey'].append('extra_HOSP_adm')#1
                                                             client_dict[target_client]['j_times'].append(current_time)
             #                                             wait_list_3.append(target_client)
                                                 elif Preference == 'NO' or Preference == 'Pref':
                                                     add_to_waiting_dict(w3_dict,target_client,current_time)
                                                     if next_event[4:12] == 'HOS_High'or next_event[4:11] == 'HOS_GRZ':
-                                                        client_dict[target_client]['journey'].append('Extra_Hosp_adm')#1
+                                                        client_dict[target_client]['journey'].append('extra_HOSP_adm')#1
                                                         client_dict[target_client]['j_times'].append(current_time)
         #                                             wait_list_3.append(target_client)
                                             else: #can go to ELV
@@ -3122,14 +3122,14 @@ with col2:
                                                         move_to_ELV_High(target_client,time_until_placement)
                                                     else:#27
                                                         if next_event[4:11] == 'HOS_GRZ':
-                                                            client_dict[target_client]['journey'].append('Extra_Hosp_adm')#1
+                                                            client_dict[target_client]['journey'].append('extra_HOSP_adm')#1
                                                             client_dict[target_client]['j_times'].append(current_time)
                                                             add_to_waiting_dict(w4_dict,target_client,current_time)
             #                                             
                                                 elif Preference == 'NO' or Preference == 'Pref':
                                                     add_to_waiting_dict(w4_dict,target_client,current_time)
                                                     if next_event[4:12] == 'HOS_High'or next_event[4:11] == 'HOS_GRZ':
-                                                        client_dict[target_client]['journey'].append('Extra_Hosp_adm')#1
+                                                        client_dict[target_client]['journey'].append('extra_HOSP_adm')#1
                                                         client_dict[target_client]['j_times'].append(current_time)
                                             else:#can go to ELV
                                                 time_until_placement = exp(adm_days)    
@@ -3228,14 +3228,14 @@ with col2:
                                                             move_to_ELV_High(target_client,time_until_placement)
                                                         else:#!@#$%
                                                             if next_event[4:12] == 'HOS_High'or next_event[4:11] == 'HOS_GRZ':
-                                                                client_dict[target_client]['journey'].append('Extra_Hosp_adm')#1
+                                                                client_dict[target_client]['journey'].append('extra_HOSP_adm')#1
                                                                 client_dict[target_client]['j_times'].append(current_time)
                                                                 add_to_waiting_dict(w3_dict,target_client,current_time)
                
                                                     elif Preference == 'NO' or Preference == 'Pref':
                                                         add_to_waiting_dict(w3_dict,target_client,current_time)
                                                         if next_event[4:12] == 'HOS_High'or next_event[4:11] == 'HOS_GRZ':
-                                                            client_dict[target_client]['journey'].append('Extra_Hosp_adm')#1
+                                                            client_dict[target_client]['journey'].append('extra_HOSP_adm')#1
                                                             client_dict[target_client]['j_times'].append(current_time)
            
                                             else: #can go to ELV
@@ -3578,14 +3578,14 @@ with col2:
                                                             move_to_ELV_High(target_client,time_until_placement)
                                                         else:#27
                                                             if next_event[4:12] == 'HOS_High'or next_event[4:11] == 'HOS_GRZ':
-                                                                client_dict[target_client]['journey'].append('Extra_Hosp_adm')#1
+                                                                client_dict[target_client]['journey'].append('extra_HOSP_adm')#1
                                                                 client_dict[target_client]['j_times'].append(current_time)
                                                                 add_to_waiting_dict(w4_dict,target_client,current_time)
                 #                                             
                                                     elif Preference == 'NO' or Preference == 'Pref':
                                                         add_to_waiting_dict(w4_dict,target_client,current_time)
                                                         if next_event[4:12] == 'HOS_High'or next_event[4:11] == 'HOS_GRZ':
-                                                            client_dict[target_client]['journey'].append('Extra_Hosp_adm')#1
+                                                            client_dict[target_client]['journey'].append('extra_HOSP_adm')#1
                                                             client_dict[target_client]['j_times'].append(current_time)
                                             else:#can go to ELV
                                                 time_until_placement = exp(adm_days)    
@@ -5956,8 +5956,8 @@ with col2:
                 wait_time_ELV_TOT = []
                 Wait_time_ELV_loc_1 = []
                 wt_to_HOSP=[]
-                number_with_HOSP_Adm = []
-                number_with_HOSP_Adm_HOSP = []
+                number_with_HOSP_adm = []
+                number_with_HOSP_adm_HOSP = []
                 with_HOSP_adm_1 = []
                 tot_n_eval_via_HOS = []
                 perc_with_HOSP_adm_HOSP_list = []
@@ -6054,22 +6054,22 @@ with col2:
                 if tot_n_eval_via_EMD > 0:
                     
                     perc_with_HOSP_adm_list.append(with_HOSP_adm/tot_n_eval_via_EMD)
-                    number_with_HOSP_Adm.append(with_HOSP_adm)
+                    number_with_HOSP_adm.append(with_HOSP_adm)
                 # else:
                 #     perc_with_HOSP_adm_list.append(0)
-                #     number_with_HOSP_Adm.append(0)
+                #     number_with_HOSP_adm.append(0)
         
                 tot_n_eval_via_HOS = len({k:v for (k,v) in output_dict.items() if \
                                   'HOS_High' or 'HOS_GRZ' in v['journey'] }.values())
                 with_HOSP_adm_1 = len({k:v for (k,v) in output_dict.items() if \
-                                  'Extra_Hosp_adm' in v['journey']}.values())
+                                  'extra_HOSP_adm' in v['journey']}.values())
                 if tot_n_eval_via_HOS > 0:
                     
                     perc_with_HOSP_adm_HOSP_list.append(with_HOSP_adm_1/tot_n_eval_via_HOS)
-                    number_with_HOSP_Adm_HOSP.append(with_HOSP_adm_1)
+                    number_with_HOSP_adm_HOSP.append(with_HOSP_adm_1)
                 # else:
                 #     perc_with_HOSP_adm_list.append(0)
-                #     number_with_HOSP_Adm_HOSP.append(0)
+                #     number_with_HOSP_adm_HOSP.append(0)
         
                 # nr patient replacements
                 nr_pat_repl = np.mean(list({k:len((v['journey']))-1 for (k,v) in output_dict.items()\
@@ -6113,9 +6113,9 @@ with col2:
         
                    
                     perc_with_HOSP_adm_mean = mean(perc_with_HOSP_adm_list)
-                    Number_with_HOSP_adm_mean = mean(number_with_HOSP_Adm)
+                    Number_with_HOSP_adm_mean = mean(number_with_HOSP_adm)
                     perc_with_HOSP_adm_mean_HOSP = mean(perc_with_HOSP_adm_HOSP_list)
-                    Number_with_HOSP_adm_mean_HOSP = mean(number_with_HOSP_Adm_HOSP)
+                    Number_with_HOSP_adm_mean_HOSP = mean(number_with_HOSP_adm_HOSP)
     
                     
                     nr_pat_repl_mean = mean(nr_pat_repl_list)
