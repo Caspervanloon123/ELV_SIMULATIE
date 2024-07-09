@@ -126,7 +126,7 @@ with col1:
             "Percentage Hoog Complex patiënten die naar WLZ gaan", "Percentage Geriatrische Zorg patiënten die naar WLZ gaan", "Percentage Hoog Complex die naar Geriatrische Zorg gaan", "Percentage Hoog Complex patiënten die naar huis gaan met aanpassingen", "Percentage Geriatrische Zorg patiënten die naar huis gaan met aanpassingen",
             "Percentage Laag Complex patiënten die naar huis gaan", "Percentage Laag Complex patiënten dat komt te overlijden", "Percentage Laag Complex patiënten die naar WMO gaan", "Percentage Laag Complex patiënten die naar WLZ gaan", "Percentage Laag Complex patiënten die naar Geriatrische Zorg gaan", "Percentage Laag Complex patiënten die naar huis gaan met aanpassingen"
         ],
-        "Openingstijden (0 correpondeert met 00:00, en 24 correspondeert met 23:59)": [
+        "Openingstijden (0 correspondeert met 00:00, en 24 correspondeert met 23:59)": [
             "Spoedeisendehulp openingstijd ", "Spoedeisendehulp sluitingstijd ", "Openingstijd Huisarts ",
             "Sluittijd Huisarts ", "Opnamemogelijkheid in het weekend", "Openingstijd ELV ", "Sluitingstijd ELV "
         ],
