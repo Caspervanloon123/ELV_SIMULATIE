@@ -6055,9 +6055,9 @@ with col2:
                     
                     perc_with_HOSP_adm_list.append(with_HOSP_adm/tot_n_eval_via_EMD)
                     number_with_HOSP_Adm.append(with_HOSP_adm)
-                else:
-                    perc_with_HOSP_adm_list.append(0)
-                    number_with_HOSP_Adm.append(0)
+                # else:
+                #     perc_with_HOSP_adm_list.append(0)
+                #     number_with_HOSP_Adm.append(0)
         
                 tot_n_eval_via_HOS = len({k:v for (k,v) in output_dict.items() if \
                                   'HOS_High' or 'HOS_GRZ' in v['journey'] }.values())
@@ -6067,9 +6067,9 @@ with col2:
                     
                     perc_with_HOSP_adm_HOSP_list.append(with_HOSP_adm_1/tot_n_eval_via_HOS)
                     number_with_HOSP_Adm_HOSP.append(with_HOSP_adm_1)
-                else:
-                    perc_with_HOSP_adm_list.append(0)
-                    number_with_HOSP_Adm_HOSP.append(0)
+                # else:
+                #     perc_with_HOSP_adm_list.append(0)
+                #     number_with_HOSP_Adm_HOSP.append(0)
         
                 # nr patient replacements
                 nr_pat_repl = np.mean(list({k:len((v['journey']))-1 for (k,v) in output_dict.items()\
