@@ -6599,6 +6599,28 @@ with col3:
             with st.expander("Aantal bedden"):
                 st.write(table4.T)
             st.success(result)
+            # Download buttons
+            def convert_df(df):
+                return df.to_csv(index=False).encode('utf-8')
+    
+            input_csv = convert_df(df1)
+            output_csv = convert_df(output_df)
+    
+            st.download_button(
+                "Download Input CSV",
+                input_csv,
+                "input.csv",
+                "text/csv",
+                key='download-input-csv'
+            )
+    
+            st.download_button(
+                "Download Output CSV",
+                output_csv,
+                "output.csv",
+                "text/csv",
+                key='download-output-csv'
+            )
             sys.stdout = sys.__stdout__
            
    
