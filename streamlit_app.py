@@ -1133,17 +1133,17 @@ with col2:
             
             def check_balanced_system(n_loc):
                 print('-----------------------Project---------------------')
-                #print(Project)
+                print(Project)
                 print('---------------------------------------------------')
                 print('-------------------Check balanced system----------------')
                 for i in range(n_loc):
-                    print("For Locatie, ", i)
+                    print("For location, ", i)
                     arrival_High = (arr_HOS_High +arr_GPR_High + arr_EMD +arr_HOS_GRZ)/n_loc
-                    service_High = serv_Home_High * out_p_Home_High +serv_Dead_High * out_p_Dead_High + out_p_GRZV_High * serv_GRZV_High + out_p_WLZ_High * serv_WLZ_High + out_p_Pall_High * serv_Pall_High + out_p_WMO_High * serv_WMO_High
-                    service_GRZ = serv_Home_GRZ * out_p_Home_GRZ +serv_Dead_GRZ * out_p_Dead_GRZ + out_p_GRZV_GRZ * serv_GRZV_GRZ + out_p_WLZ_GRZ * serv_WLZ_GRZ + out_p_Pall_GRZ * serv_Pall_GRZ + out_p_WMO_GRZ * serv_WMO_GRZ
+                    service_High = (1/serv_Home_High) * out_p_Home_High +(1/serv_Dead_High) * out_p_Dead_High + out_p_GRZV_High * (1/serv_GRZV_High) + out_p_WLZ_High * (1/serv_WLZ_High) + out_p_Pall_High * (1/serv_Pall_High) + out_p_WMO_High * (1/serv_WMO_High)
+                    service_GRZ = (1/serv_Home_GRZ) * out_p_Home_GRZ + (1/serv_Dead_GRZ) * out_p_Dead_GRZ + out_p_GRZV_GRZ * (serv_GRZV_GRZ) + out_p_WLZ_GRZ * (1/serv_WLZ_GRZ) + out_p_Pall_GRZ * (1/serv_Pall_GRZ) + out_p_WMO_GRZ * (1/serv_WMO_GRZ)
                     service_ELV_high = (service_High+service_GRZ)/2
                     arrival_Low = arr_GPR_Low/n_loc
-                    service_Low = serv_Home_Low * out_p_Home_Low +serv_Dead_Low * out_p_Dead_Low + out_p_GRZV_Low * serv_GRZV_Low + out_p_WLZ_Low * serv_WLZ_Low + out_p_Pall_Low * serv_Pall_Low + out_p_WMO_Low * serv_WMO_Low
+                    service_Low = (1/serv_Home_Low) * out_p_Home_Low + (1/serv_Dead_Low) * out_p_Dead_Low + out_p_GRZV_Low * (1/serv_GRZV_Low) + out_p_WLZ_Low * (1/serv_WLZ_Low) + out_p_Pall_Low * (1/serv_Pall_Low) + out_p_WMO_Low * (1/serv_WMO_Low)
                     
             
             
@@ -1154,14 +1154,14 @@ with col2:
                         n_servers_High = n_beds_ELV_High_list[i]
             
                         if (arrival_High/(service_ELV_high*n_servers_High)) < 1:
-                            print("High System is stable rho_High equals: ", (arrival_High/(service_ELV_high*n_servers_High)))
+                            print("High System is stable rho_High equals: ", (arrival_High/(1/service_ELV_high*n_servers_High)))
                         else:
-                            print("High System is not stable, rho_High equals: ", (arrival_High/(service_ELV_high*n_servers_High)))
+                            print("High System is not stable, rho_High equals: ", (arrival_High/(1/service_ELV_high*n_servers_High)))
             
                         if (arrival_Low/(service_Low*n_servers_Low)) < 1:
-                            print("Low System is stable rho_Low equals: ", (arrival_Low/(service_Low*n_servers_Low)))
+                            print("Low System is stable rho_Low equals: ", (arrival_Low/(1/service_Low*n_servers_Low)))
                         else:
-                            print("System is not stable, rho_Low equals: ", (arrival_Low/(service_Low*n_servers_Low)))
+                            print("System is not stable, rho_Low equals: ", (arrival_Low/(1/service_Low*n_servers_Low)))
             
                     elif Scen_part_bed_Share:
                         
@@ -1171,24 +1171,24 @@ with col2:
                         arrival_High_Complex = (arr_HOS_High + arr_EMD + arr_GPR_High)/n_loc
                         arrival_GRZ = arr_HOS_GRZ/n_loc
                         if (arrival_High / (service_High * n_servers_High)) < 1:
-                            print("High System is stable rho_High equals: ", (arrival_High / (service_ELV_high * n_servers_High)))
+                            print("High System is stable rho_High equals: ", (arrival_High / (1/service_ELV_high * n_servers_High)))
                         else:
-                            print("High System is not stable, rho_High equals: ", (arrival_High / (service_ELV_high * n_servers_High)))
+                            print("High System is not stable, rho_High equals: ", (arrival_High / (1/service_ELV_high * n_servers_High)))
             
                         if (arrival_High_Complex / (service_High * (n_beds_High_Complex_list[i] + n_beds_shared_High_list[i]))) < 1:
-                            print("High complex System is stable rho_High equals: ", (arrival_High_Complex / (service_High * (n_beds_High_Complex_list[i] + n_beds_shared_High_list[i]))))
+                            print("High complex System is stable rho_High equals: ", (arrival_High_Complex / (1/service_High * (n_beds_High_Complex_list[i] + n_beds_shared_High_list[i]))))
                         else:
-                            print("High complex System is not stable, rho_High equals: ", (arrival_High_Complex / (service_High * (n_beds_High_Complex_list[i] + n_beds_shared_High_list[i]))))
+                            print("High complex System is not stable, rho_High equals: ", (arrival_High_Complex / (1/service_High * (n_beds_High_Complex_list[i] + n_beds_shared_High_list[i]))))
             
                         if (arrival_GRZ / (service_High * (n_beds_GRZ_list[i] + n_beds_shared_High_list[i]))) < 1:
-                            print("GRZ_High System is stable rho_High equals: ", (arrival_GRZ / (service_GRZ * (n_beds_GRZ_list[i] + n_beds_shared_High_list[i]))))
+                            print("GRZ_High System is stable rho_High equals: ", (arrival_GRZ / (1/service_GRZ * (n_beds_GRZ_list[i] + n_beds_shared_High_list[i]))))
                         else:
-                            print("GRZ_High System is not stable, rho_High equals: ", (arrival_GRZ / (service_GRZ * (n_beds_GRZ_list[i] + n_beds_shared_High_list[i]))))
+                            print("GRZ_High System is not stable, rho_High equals: ", (arrival_GRZ / (1/service_GRZ * (n_beds_GRZ_list[i] + n_beds_shared_High_list[i]))))
             
                         if (arrival_Low / (service_Low * n_servers_Low)) < 1:
-                            print("System is stable rho_Low equals: ", (arrival_Low / (service_Low * n_servers_Low)))
+                            print("System is stable rho_Low equals: ", (arrival_Low / (1/service_Low * n_servers_Low)))
                         else:
-                            print("Low System is not stable, rho_Low equals: ", (arrival_Low / (service_Low * n_servers_Low)))
+                            print("Low System is not stable, rho_Low equals: ", (arrival_Low / (1/service_Low * n_servers_Low)))
             
             
                     elif Scen_NO_Sharing:
@@ -1198,24 +1198,24 @@ with col2:
                         arrival_High_Complex = (arr_HOS_High+arr_EMD+arr_GPR_High)/n_loc
                         arrival_GRZ = (arr_HOS_GRZ)/n_loc
                         if (arrival_High/(service_High*n_servers_High)) < 1:
-                            print("High System is stable rho_High equals: ", (arrival_High/(service_ELV_high*n_servers_High)))
+                            print("High System is stable rho_High equals: ", (arrival_High/(1/service_ELV_high*n_servers_High)))
                         else:
-                            print("High System is not stable, rho_High equals: ", (arrival_High/(service_ELV_high*n_servers_High)))
+                            print("High System is not stable, rho_High equals: ", (arrival_High/(1/service_ELV_high*n_servers_High)))
             
                         if (arrival_High_Complex/(service_High*n_beds_High_Complex_list[i])) < 1:
-                            print("High complex System is stable rho_High equals: ", (arrival_High_Complex/(service_High*n_beds_High_Complex_list[i])))
+                            print("High complex System is stable rho_High equals: ", (arrival_High_Complex/(1/service_High*n_beds_High_Complex_list[i])))
                         else:
-                            print("High complex System is not stable, rho_High equals: ", (arrival_High_Complex/(service_High*n_beds_High_Complex_list[i])))
+                            print("High complex System is not stable, rho_High equals: ", (arrival_High_Complex/(1/service_High*n_beds_High_Complex_list[i])))
             
                         if (arrival_GRZ/(service_High*n_beds_GRZ_list[i])) < 1:
-                            print("GRZ System is stable rho_High equals: ", (arrival_GRZ/(service_GRZ*n_beds_GRZ_list[i])))
+                            print("GRZ System is stable rho_High equals: ", (arrival_GRZ/(1/service_GRZ*n_beds_GRZ_list[i])))
                         else:
-                            print("GRZ System is not stable, rho_High equals: ", (arrival_GRZ/(service_GRZ*n_beds_GRZ_list[i]))) 
+                            print("GRZ System is not stable, rho_High equals: ", (arrival_GRZ/(1/service_GRZ*n_beds_GRZ_list[i]))) 
             
                         if (arrival_Low/(service_Low*n_servers_Low)) < 1:
-                            print("Low System is stable rho_Low equals: ", (arrival_Low/(service_Low*n_servers_Low)))
+                            print("Low System is stable rho_Low equals: ", (arrival_Low/(1/service_Low*n_servers_Low)))
                         else:
-                            print("Low System is not stable, rho_Low equals: ", (arrival_Low/(service_Low*n_servers_Low)))
+                            print("Low System is not stable, rho_Low equals: ", (arrival_Low/(1/service_Low*n_servers_Low)))
                         
                     elif Scen_Total_Sharing:
                         n_servers = n_beds_ELV_total_list[i]
@@ -1223,11 +1223,11 @@ with col2:
                         arrival_total = (arr_HOS_High+arr_EMD+arr_GPR_High +arr_HOS_GRZ +arr_GPR_Low)/n_loc
                         service_total = (service_ELV_high+service_Low)/2
                         if (arrival_total/(n_servers*service_total)) < 1:
-                            print(" System is stable rho_TOT equals: ", (arrival_total/(service_total*n_servers)))
+                            print(" System is stable rho_TOT equals: ", (arrival_total/(1/service_total*n_servers)))
                         else:
-                            print(" System is not stable, rho_TOT equals: ", (arrival_total/(service_total*n_servers)))
+                            print(" System is not stable, rho_TOT equals: ", (arrival_total/(1/service_total*n_servers)))
                 print('-------------------------------------------------------')
-            
+                
             def extract_number(target_client):
                 if type(target_client) == list:
                     index = find_index(target_client)
