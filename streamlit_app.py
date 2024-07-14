@@ -2,6 +2,8 @@
 import streamlit as st 
 import pandas as pd
 import sys
+import zipfile
+import io
 
 # page_bg_img = """
 # <style>
