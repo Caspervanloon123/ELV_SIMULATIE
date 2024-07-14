@@ -6612,20 +6612,29 @@ with col3:
             input_csv = convert_df(df1)
             output_csv = convert_df(output_df)
     
+            def convert_df(df):
+                return df.to_csv(index=False).encode('utf-8')
+
+            # Assuming df1 is your input DataFrame and output_df is your output DataFrame
+            input_csv = convert_df(df1)
+            output_csv = convert_df(output_df)
+            
+            # Create a ZIP file in memory
+            zip_buffer = io.BytesIO()
+            with zipfile.ZipFile(zip_buffer, "a", zipfile.ZIP_DEFLATED, False) as zip_file:
+                zip_file.writestr("input.csv", input_csv)
+                zip_file.writestr("output.csv", output_csv)
+            
+            # Ensure the buffer is reset to the beginning
+            zip_buffer.seek(0)
+            
+            # Streamlit download button for the ZIP file
             st.download_button(
-                "Download Input CSV",
-                input_csv,
-                "input.csv",
-                "text/csv",
-                key='download-input-csv'
-            )
-    
-            st.download_button(
-                "Download Output CSV",
-                output_csv,
-                "output.csv",
-                "text/csv",
-                key='download-output-csv'
+                label="Download Input and Output CSVs",
+                data=zip_buffer,
+                file_name="input_output_csvs.zip",
+                mime="application/zip",
+                key='download-zip'
             )
             sys.stdout = sys.__stdout__
            
