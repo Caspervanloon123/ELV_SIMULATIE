@@ -6135,6 +6135,10 @@ with col2:
                         wt_ELV_Low_mean = mean(wait_time_ELV_Low_Help_List)
                         bez_gr_Low_mean = mean(bez_gr_Low_list)
                         bez_gr_High_mean = mean(bez_gr_list_High)
+                        if bez_gr_High_mean>1:
+                            bez_gr_High_mean = 1
+                        if bez_gr_Low_mean>1:
+                            bez_gr_Low_mean = 1
                         wt_ELV_TOT_mean = (wt_ELV_High_mean+ wt_ELV_Low_mean)/2
                     else: 
         
@@ -6575,10 +6579,7 @@ with col3:
             for col in output_df.select_dtypes(include=['float']):
                 if not is_binomial(output_df[col]):
                     output_df[col] = output_df[col].round(2)
-            if output_df[bez_gr_High] > 1:
-                output_df[bez_gr_High] = 1
-            if output_df[bez_gr_Low]>1:
-                output_df[bez_gr_Low] = 1
+            
             table1 = pd.DataFrame(output_df[table1_columns])
             table3 = pd.DataFrame(output_df[table3_columns])
             table4 = pd.DataFrame(output_df[table4_columns])
