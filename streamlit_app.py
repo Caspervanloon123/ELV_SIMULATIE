@@ -6201,10 +6201,10 @@ with col2:
                 if tot_n_eval_via_EMD > 0:
                     
                     perc_with_HOSP_adm_list.append(with_HOSP_adm/tot_n_eval_via_EMD)
-                    number_with_HOSP_Adm.append(with_HOSP_adm)
+                    number_with_HOSP_adm.append(with_HOSP_adm)
                 else:
                     perc_with_HOSP_adm_list.append(0)
-                    number_with_HOSP_Adm.append(0)
+                    number_with_HOSP_adm.append(0)
         
                 tot_n_eval_via_HOS = len({k:v for (k,v) in output_dict.items() if \
                                   'HOS_High' or 'HOS_GRZ' in v['journey'] }.values())
@@ -6213,10 +6213,10 @@ with col2:
                 if tot_n_eval_via_HOS > 0:
                     
                     perc_with_HOSP_adm_HOSP_list.append(with_HOSP_adm_1/tot_n_eval_via_HOS)
-                    number_with_HOSP_Adm_HOSP.append(with_HOSP_adm_1)
+                    number_with_HOSP_adm_HOSP.append(with_HOSP_adm_1)
                 else:
                     perc_with_HOSP_adm_list.append(0)
-                    number_with_HOSP_Adm_HOSP.append(0)
+                    number_with_HOSP_adm_HOSP.append(0)
         
                 # nr patient replacements
                 nr_pat_repl = np.mean(list({k:len((v['journey']))-1 for (k,v) in output_dict.items()\
@@ -6240,8 +6240,8 @@ with col2:
                 LOSHIGH_Totallist.append(np.mean(los_list))
                 LOSLOW_Tot_Totallist.append(np.mean(los_Low_list))
                 NRPATTRANS_Totallist.append(np.mean(nr_pat_trans_mean))
-                NRHOSPADMHOSP_Totallist.append(np.mean(number_with_HOSP_Adm_HOSP))
-                NRHOSPADMEMD_Totallist.append(np.mean(number_with_HOSP_Adm))
+                NRHOSPADMHOSP_Totallist.append(np.mean(number_with_HOSP_adm_HOSP))
+                NRHOSPADMEMD_Totallist.append(np.mean(number_with_HOSP_adm))
             
                         
                 output_dict_save = output_dict.copy()
@@ -6292,9 +6292,9 @@ with col2:
         
         
                     perc_with_HOSP_adm_final = make_conf_output(PERCHOSPADMEMD_Totallist)
-                    Number_with_HOSP_adm_final = make_conf_output(NRHOSPADMEMD_Totallist)
+                    number_with_HOSP_adm_final = make_conf_output(NRHOSPADMEMD_Totallist)
                     perc_with_HOSP_adm_final_HOSP = make_conf_output(PERCHOSPADMHOSP_Totallist)
-                    Number_with_HOSP_adm_final_HOSP = make_conf_output(NRHOSPADMHOSP_Totallist)
+                    number_with_HOSP_adm_final_HOSP = make_conf_output(NRHOSPADMHOSP_Totallist)
                     nr_pat_repl_final = make_conf_output(NRPATREPL__Totallist)
         
         
@@ -6323,9 +6323,9 @@ with col2:
         
                    
                     perc_with_HOSP_adm_mean = mean(PERCHOSPADMEMD_Totallist)
-                    Number_with_HOSP_adm_mean = mean(NRHOSPADMEMD_Totallist)
+                    number_with_HOSP_adm_mean = mean(NRHOSPADMEMD_Totallist)
                     perc_with_HOSP_adm_mean_HOSP = mean(PERCHOSPADMHOSP_Totallist)
-                    Number_with_HOSP_adm_mean_HOSP = mean(NRHOSPADMHOSP_Totallist)
+                    number_with_HOSP_adm_mean_HOSP = mean(NRHOSPADMHOSP_Totallist)
         
         
         
@@ -6375,9 +6375,9 @@ with col2:
                         'Wt_to_TRW': wait_time_to_TRW_mean,
                         'WT_from_EMD':wait_time_from_EMD_mean,
                         'Perc_with_HOSP_adm': perc_with_HOSP_adm_mean,
-                        'Number with hosp adm EMD':Number_with_HOSP_adm_mean, 
+                        'Number with hosp adm EMD':number_with_HOSP_adm_mean, 
                         'Perc_with_HOSP_adm_HOSP':perc_with_HOSP_adm_mean_HOSP, 
-                        'Number with hosp adm HOSP':Number_with_HOSP_adm_mean_HOSP,              
+                        'Number with hosp adm HOSP':number_with_HOSP_adm_mean_HOSP,              
                         'nr_pat_repl': nr_pat_repl_mean,
                         'los_ELV_High': los_High_mean,
                         'los_ELV_Low': los_Low_mean,
