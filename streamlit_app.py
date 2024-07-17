@@ -664,8 +664,70 @@ with col2:
             loc_ELV_Low = []
             cur_nr_TRW = 0
             trans_list = []
+
+            Wait_time_ELV_loc= []
+            Wait_time_ELV_loc_part= []
+            wt_to_ELV_High= []
+            ELV_Help= []
+            wait_time_ELV_High= []
+            wt_to_ELV_Low_p= []
+            wait_time_ELV_Low_q= []
+            wait_time_ELV_Low_Help_List= []
+            wait_time_ELV_Low= []
+            wt_to_ELV_High= []
             
-            
+            wait_time_from_HOSP= []
+            wt_to_ELV_High_q= []
+            wt_to_ELV_High_p= []
+            wait_time_elv_High= []
+            wait_time_from_GPR_High= []
+            wt_to_ELV_Low_p= []
+            wait_time_ELV_Low_q= []
+            wait_time_Help= []
+            wait_time_from_GPR_Low= []
+            los_mean_p= []
+            los_mean_q= []
+            los_mean_help= []
+            los_list= []
+            los_Low_mean_p= []
+            los_Low_mean_q= []
+            los_Low_help= []
+            los_Low_list= []
+            tot_cost_ELV_List= []
+            tot_cost_ELV_help = []
+            los_mean =0
+            bez_gr_TRW_mean=0
+            wait_time_from_EMD = []
+            wt_to_ELV_TOT=[]
+            wait_time_ELV_TOT = []
+            Wait_time_ELV_loc_1 = []
+            wt_to_HOSP=[]
+            number_with_HOSP_adm = []
+            number_with_HOSP_adm_HOSP = []
+            with_HOSP_adm_1 = []
+            tot_n_eval_via_HOS = []
+            perc_with_HOSP_adm_HOSP_list = []
+
+            Wait_time_Tot_Totallist = []
+            Wait_time_high_Totallist = []
+            Wait_time_low_Totallist = []
+            Wait_time_HOSPGRZ_Totallist = []
+            Wait_time_HOSPHIGH_Totallist = []
+            Wait_time_EMD_Totallist = []
+            Wait_time_GPRHIGH_Totallist = []
+            Wait_time_GPRLOW_Totallist = []
+            Wait_time_TRW_Totallist = []
+            SERVLEVEL_Totallist = []
+            PERCHOSPADMHOSP_Totallist = []
+            PERCHOSPADMEMD_Totallist = []
+            NRPATREPL__Totallist = []
+            LOSHIGH_Totallist = []
+            LOSLOW_Tot_Totallist = []
+            NRPATTRANS_Totallist = []
+            NRHOSPADMHOSP_Totallist = []
+            NRHOSPADMEMD_Totallist = []
+            Wait_time_TRW_Totallist = []
+                    
             n_loc = int(input.loc[loop_nr,'n_loc'])
             
             def sum_lists(list_a,list_b):
@@ -5925,69 +5987,24 @@ with col2:
                             
         #         # einde subrun <<<<<<< EVALUATION >>>>>>>>>>>>>
                 output_dict = order_journeys(output_dict, n_loc)
-                
-                    
-                Wait_time_ELV_loc= []
-                Wait_time_ELV_loc_part= []
-                wt_to_ELV_High= []
-                ELV_Help= []
-                wait_time_ELV_High= []
-                wt_to_ELV_Low_p= []
-                wait_time_ELV_Low_q= []
-                wait_time_ELV_Low_Help_List= []
-                wait_time_ELV_Low= []
-                wt_to_ELV_High= []
-                
-                wait_time_from_HOSP= []
-                wt_to_ELV_High_q= []
-                wt_to_ELV_High_p= []
-                wait_time_elv_High= []
-                wait_time_from_GPR_High= []
-                wt_to_ELV_Low_p= []
-                wait_time_ELV_Low_q= []
-                wait_time_Help= []
-                wait_time_from_GPR_Low= []
-                los_mean_p= []
-                los_mean_q= []
-                los_mean_help= []
-                los_list= []
-                los_Low_mean_p= []
-                los_Low_mean_q= []
-                los_Low_help= []
-                los_Low_list= []
-                tot_cost_ELV_List= []
-                tot_cost_ELV_help = []
-                los_mean =0
-                bez_gr_TRW_mean=0
-                wait_time_from_EMD = []
-                wt_to_ELV_TOT=[]
-                wait_time_ELV_TOT = []
-                Wait_time_ELV_loc_1 = []
-                wt_to_HOSP=[]
-                number_with_HOSP_adm = []
-                number_with_HOSP_adm_HOSP = []
-                with_HOSP_adm_1 = []
-                tot_n_eval_via_HOS = []
-                perc_with_HOSP_adm_HOSP_list = []
-                
-                
-                
-                #print(w1_dict,w2_dict,w3_dict,w_tot_dict,w2_dict_TRW,w3_dict_TRW)
+                output_dict = order_journeys(output_dict, n_loc)
         
+                #print(w1_dict,w2_dict,w3_dict,w_tot_dict,w2_dict_TRW,w3_dict_TRW)
+                
                 
                 # wt voor alleen mensen die direct naar ELV zijn gegaan
                 wait_time_ELV_TOT = list({k:v['j_times'][v['journey'].index('ELV_TOT')] - v['j_times'][0] for (k,v) in output_dict.items() if 'ELV_TOT' in v['journey']}.values())+list({k:v['j_times'][v['journey'].index('ELV_EMDR')] - v['j_times'][0] for (k,v) in output_dict.items() if 'ELV_EMDR' in v['journey']}.values())
-                
+                Wait_time_Tot_Totallist.append(np.mean(wait_time_ELV_TOT))
                 
                 
                 # wt voor alleen mensen die direct naar ELV zijn gegaan
                 wt_to_ELV_High = list({k:v['j_times'][v['journey'].index('ELV_High')] - v['j_times'][0] for (k,v) in output_dict.items() if 'ELV_High' in v['journey']}.values())+list({k:v['j_times'][v['journey'].index('ELV_EMDR')] - v['j_times'][0] for (k,v) in output_dict.items() if 'ELV_EMDR' in v['journey']}.values())\
                 + list({k:v['j_times'][v['journey'].index('ELV_part')] - v['j_times'][0] for (k,v) in output_dict.items() if 'ELV_part' in v['journey']}.values()) 
-                
+                Wait_time_high_Totallist.append(np.mean(wt_to_ELV_High))
             
             
                 wait_time_ELV_Low_Help_List = list({k:v['j_times'][v['journey'].index('ELV_Low')] - v['j_times'][0] for (k,v) in output_dict.items() if 'ELV_Low' in v['journey']}.values())
-                
+                Wait_time_low_Totallist.append(np.mean(wait_time_ELV_Low_Help_List))
                 
                 
                 if Scen_part_bed_Share:
@@ -6048,7 +6065,20 @@ with col2:
              
                 wait_time_to_TRW = list({k:v['j_times'][v['journey'].index('TRW')]-v['j_times'][0] for (k,v) in output_dict.items() if \
                                              'TRW' in v['journey']}.values())
-               
+                Wait_time_HOSPGRZ_Totallist.append(np.mean(wait_time_from_HOSP_GRZ))
+                Wait_time_HOSPHIGH_Totallist.append(np.mean(wait_time_from_HOSP_High))
+                Wait_time_EMD_Totallist.append(np.mean(wait_time_from_EMD))
+                Wait_time_GPRHIGH_Totallist.append(np.mean(wait_time_from_GPR_High))
+                Wait_time_GPRLOW_Totallist.append(np.mean(wait_time_from_GPR_Low))
+                Wait_time_TRW_Totallist.append(np.mean(wait_time_to_TRW))
+                w_grz.append(wait_time_from_HOSP_GRZ)
+                w_GPR_h.append(wait_time_from_GPR_High)
+                w_hos_h.append(wait_time_from_HOSP_High)
+                w_EMD.append(wait_time_from_EMD)
+                w_GPR_l.append(wait_time_from_GPR_Low)
+                w_trw.append(wait_time_to_TRW)
+        
+                
                 
                 
                 if len(list({k:v for (k,v) in output_dict.items() if v['journey'][0] in ['HOS_GRZ','HOS_High','GPR_High','EMD','GPR_Low']}.keys())):
@@ -6062,22 +6092,22 @@ with col2:
                 if tot_n_eval_via_EMD > 0:
                     
                     perc_with_HOSP_adm_list.append(with_HOSP_adm/tot_n_eval_via_EMD)
-                    number_with_HOSP_adm.append(with_HOSP_adm)
-                # else:
-                #     perc_with_HOSP_adm_list.append(0)
-                #     number_with_HOSP_adm.append(0)
+                    number_with_HOSP_Adm.append(with_HOSP_adm)
+                else:
+                    perc_with_HOSP_adm_list.append(0)
+                    number_with_HOSP_Adm.append(0)
         
                 tot_n_eval_via_HOS = len({k:v for (k,v) in output_dict.items() if \
                                   'HOS_High' or 'HOS_GRZ' in v['journey'] }.values())
                 with_HOSP_adm_1 = len({k:v for (k,v) in output_dict.items() if \
-                                  'extra_HOSP_adm' in v['journey']}.values())
+                                  'Extra_Hosp_adm' in v['journey']}.values())
                 if tot_n_eval_via_HOS > 0:
                     
                     perc_with_HOSP_adm_HOSP_list.append(with_HOSP_adm_1/tot_n_eval_via_HOS)
-                    number_with_HOSP_adm_HOSP.append(with_HOSP_adm_1)
-                # else:
-                #     perc_with_HOSP_adm_list.append(0)
-                #     number_with_HOSP_adm_HOSP.append(0)
+                    number_with_HOSP_Adm_HOSP.append(with_HOSP_adm_1)
+                else:
+                    perc_with_HOSP_adm_list.append(0)
+                    number_with_HOSP_Adm_HOSP.append(0)
         
                 # nr patient replacements
                 nr_pat_repl = np.mean(list({k:len((v['journey']))-1 for (k,v) in output_dict.items()\
@@ -6094,7 +6124,16 @@ with col2:
                 else:
                     nr_pat_trans_mean = len(list({k:v['j_times'] for (k,v) in output_dict.items() if 'Transfer' in v['journey']}.values()))
                 #costs
-                
+                SERVLEVEL_Totallist.append(np.mean(serv_level))
+                PERCHOSPADMHOSP_Totallist.append(np.mean(perc_with_HOSP_adm_HOSP_list))
+                PERCHOSPADMEMD_Totallist.append(np.mean(perc_with_HOSP_adm_list))
+                NRPATREPL__Totallist.append(np.mean(nr_pat_repl))
+                LOSHIGH_Totallist.append(np.mean(los_list))
+                LOSLOW_Tot_Totallist.append(np.mean(los_Low_list))
+                NRPATTRANS_Totallist.append(np.mean(nr_pat_trans_mean))
+                NRHOSPADMHOSP_Totallist.append(np.mean(number_with_HOSP_Adm_HOSP))
+                NRHOSPADMEMD_Totallist.append(np.mean(number_with_HOSP_Adm))
+            
                         
                 output_dict_save = output_dict.copy()
                 output_dict = {}
@@ -6104,6 +6143,7 @@ with col2:
             print('')
             
             if n_evaluated > 0:
+                
                 #plt.hist(abs_aanw_list)
                 if Project == 'Check MMC High':
                     wt_ELV_High_final = make_conf_output(wt_to_ELV_High)
@@ -6111,42 +6151,94 @@ with col2:
                     serv_level_final = make_conf_output(serv_level)
                     serv_level_mean = mean(serv_level)
                 else:
-    
-                    wt_HOSP_High_mean = mean(wait_time_from_HOSP_High)
-                    wt_HOSP_GRZ_mean = mean(wait_time_from_HOSP_GRZ)
-                    wt_GPR_High_mean = mean(wait_time_from_GPR_High)
-                    wt_GPR_Low_mean = mean(wait_time_from_GPR_Low)
-                    wait_time_to_TRW_mean = mean(wait_time_to_TRW)
-                    wait_time_from_EMD_mean = mean(wait_time_from_EMD)
+                    
+                
+                
+                    wt_ELV_High_final = make_conf_output(Wait_time_high_Totallist)
+                    wt_ELV_Low_final = make_conf_output(Wait_time_low_Totallist)
+                    wt_HOSP_GRZ_final = make_conf_output(Wait_time_HOSPGRZ_Totallist)
+                    wt_HOSP_High_final = make_conf_output(Wait_time_HOSPHIGH_Totallist)
+                    wt_GPR_High_final = make_conf_output(Wait_time_GPRHIGH_Totallist)
+                    wt_GPR_Low_final = make_conf_output(wait_time_from_GPR_Low)
+                    wait_time_to_TRW_final = make_conf_output(Wait_time_TRW_Totallist)
+                    wait_time_from_EMD_final = make_conf_output(Wait_time_EMD_Totallist)
+                    if Scen_Total_Sharing != True:
+                        wt_ELV_Tot_final = make_conf_output(wt_to_ELV_High+wait_time_ELV_Low)
+                        wt_ELV_High_final = make_conf_output(Wait_time_high_Totallist)
+                        wt_ELV_Low_final = make_conf_output(Wait_time_low_Totallist)
+                        bez_gr_Low_final = make_conf_output(bez_gr_Low_list)
+                        bez_gr_High_final = make_conf_output(bez_gr_list_High)
+                        los_final = make_conf_output(los_list)
+                        los_Low_final = make_conf_output(los_Low_list)
+        
+        
+                    else: 
+                        wt_ELV_Tot_final = make_conf_output(Wait_time_Tot_Totallist)
+                        wt_ELV_High_final = make_conf_output(Wait_time_EMD_Totallist+Wait_time_GPRHIGH_Totallist+Wait_time_HOSPHIGH_Totallist+Wait_time_HOSPGRZ_Totallist)
+                        wt_ELV_Low_final = make_conf_output(Wait_time_low_Totallist)
+                        bez_gr_Low_final = make_conf_output(bez_gr_Low_list)
+                        bez_gr_High_final = make_conf_output(bez_gr_list_High)
+                        los_final = make_conf_output(los_list)
+                        los_Low_final = make_conf_output(los_Low_list)
+        
+        
+                    perc_with_HOSP_adm_final = make_conf_output(PERCHOSPADMEMD_Totallist)
+                    Number_with_HOSP_adm_final = make_conf_output(NRHOSPADMEMD_Totallist)
+                    perc_with_HOSP_adm_final_HOSP = make_conf_output(PERCHOSPADMHOSP_Totallist)
+                    Number_with_HOSP_adm_final_HOSP = make_conf_output(NRHOSPADMHOSP_Totallist)
+                    nr_pat_repl_final = make_conf_output(NRPATREPL__Totallist)
+        
+        
+                    bez_gr_final = make_conf_output(bez_gr_list_Total)
+                    bez_gr_Low_final = make_conf_output(bez_gr_Low_list)
+                    bez_gr_High_final = make_conf_output(bez_gr_list_High)
+                    bez_gr_TRW_final = make_conf_output(bez_gr_TRW_list)
+                    bez_gr_EMDR_final = make_conf_output(bez_gr_EMDR_list)
+        
+                    len_w3_final = make_conf_output(len_w3_list)
+                    len_w2_final = make_conf_output(len_w2_list)
+                    len_w1_final = make_conf_output(len_w1_list)
+                    len_w4_final = make_conf_output(len_w4_list)
+        
+                    serv_level_final = make_conf_output(SERVLEVEL_Totallist)
+        
+                    #means
+        
+                    
+                    wt_HOSP_High_mean = mean(Wait_time_HOSPHIGH_Totallist)
+                    wt_HOSP_GRZ_mean = mean(Wait_time_HOSPGRZ_Totallist)
+                    wt_GPR_High_mean = mean(Wait_time_GPRHIGH_Totallist)
+                    wt_GPR_Low_mean = mean(Wait_time_GPRLOW_Totallist)
+                    wait_time_to_TRW_mean = mean(Wait_time_TRW_Totallist)
+                    wait_time_from_EMD_mean = mean(Wait_time_EMD_Totallist)
         
                    
-                    perc_with_HOSP_adm_mean = mean(perc_with_HOSP_adm_list)
-                    Number_with_HOSP_adm_mean = mean(number_with_HOSP_adm)
-                    perc_with_HOSP_adm_mean_HOSP = mean(perc_with_HOSP_adm_HOSP_list)
-                    Number_with_HOSP_adm_mean_HOSP = mean(number_with_HOSP_adm_HOSP)
-    
+                    perc_with_HOSP_adm_mean = mean(PERCHOSPADMEMD_Totallist)
+                    Number_with_HOSP_adm_mean = mean(NRHOSPADMEMD_Totallist)
+                    perc_with_HOSP_adm_mean_HOSP = mean(PERCHOSPADMHOSP_Totallist)
+                    Number_with_HOSP_adm_mean_HOSP = mean(NRHOSPADMHOSP_Totallist)
+        
+        
+        
+        
                     
-                    nr_pat_repl_mean = mean(nr_pat_repl_list)
-                    los_High_mean = mean(los_list)
-                    los_Low_mean = mean(los_Low_list)
+                    nr_pat_repl_mean = mean(NRPATREPL__Totallist)
+                    los_High_mean = mean(LOSHIGH_Totallist)
+                    los_Low_mean = mean(LOSLOW_Tot_Totallist)
         
                     if Scen_Total_Sharing != True:
-                        wt_ELV_High_mean = mean(wt_to_ELV_High)
-                        wt_ELV_Low_mean = mean(wait_time_ELV_Low_Help_List)
+                        wt_ELV_High_mean = mean(Wait_time_high_Totallist)
+                        wt_ELV_Low_mean = mean(Wait_time_low_Totallist)
                         bez_gr_Low_mean = mean(bez_gr_Low_list)
                         bez_gr_High_mean = mean(bez_gr_list_High)
-                        if bez_gr_High_mean>1:
-                            bez_gr_High_mean = 1
-                        if bez_gr_Low_mean>1:
-                            bez_gr_Low_mean = 1
                         wt_ELV_TOT_mean = (wt_ELV_High_mean+ wt_ELV_Low_mean)/2
                     else: 
         
                         wt_ELV_High_mean = (wt_HOSP_High_mean+wt_HOSP_GRZ_mean +wt_GPR_High_mean+wait_time_from_EMD_mean)/4
-                        wt_ELV_Low_mean = wt_GPR_Low_mean
+                        wt_ELV_Low_mean = mean(Wait_time_low_Totallist)
                         bez_gr_Low_mean = 0
                         bez_gr_High_mean = 0
-                        wt_ELV_TOT_mean = mean(wait_time_ELV_TOT)
+                        wt_ELV_TOT_mean = mean(Wait_time_Tot_Totallist)
                     bez_gr_Tot_mean = mean(bez_gr_list_Total)
                     bez_gr_TRW_mean = mean(bez_gr_TRW_list)
                     if sum(beds_Emergency_list)>0:
@@ -6157,8 +6249,8 @@ with col2:
                     len_w2_list_mean = mean(len_w2_list)
                     len_wtot_mean = mean(len_w_total_list)
         
-                    serv_level_mean = serv_level
-                
+                    serv_level_mean = mean(SERVLEVEL_Totallist)
+                        
                 
                 
                 output_mean_df_temp = pd.DataFrame.from_dict({'Run': [loop_nr],\
