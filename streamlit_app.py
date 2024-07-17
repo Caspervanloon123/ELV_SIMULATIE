@@ -454,7 +454,7 @@ with col2:
             import bisect
             import time
             #import matplotlib.pyplot as plt
-            #import scipy.stats
+            import scipy.stats
             #import ast
             #import os
             from random import randrange
