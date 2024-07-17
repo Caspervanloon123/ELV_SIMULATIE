@@ -6254,12 +6254,13 @@ with col2:
             if n_evaluated > 0:
                 
                 #plt.hist(abs_aanw_list)
-                # if Project == 'Check MMC High':
+                if Project == 'Check MMC High':
+                    print('a')
                 #     wt_ELV_High_final = make_conf_output(wt_to_ELV_High)
         
                 #     serv_level_final = make_conf_output(serv_level)
                 #     serv_level_mean = mean(serv_level)
-                # else:
+                else:
                     
                 
                 
@@ -6359,71 +6360,71 @@ with col2:
                     len_wtot_mean = mean(len_w_total_list)
         
                     serv_level_mean = mean(SERVLEVEL_Totallist)
-                        
-                
-                
+                    
+            
+            
                 output_mean_df_temp = pd.DataFrame.from_dict({'Run': [loop_nr],\
-                        'Running_time (sec)': round(time.process_time() - start_time),
-                        'Project':Project,
-                        'Wait_time_ELV_High': wt_ELV_High_mean,
-                        'Wait_time_ELV_Low': wt_ELV_Low_mean,
-                        'Wait_time_ELV_TOT': wt_ELV_TOT_mean,
-                        'Wt_from_HOSP_GRZ': wt_HOSP_GRZ_mean,
-                        'Wt_from_HOSP_High': wt_HOSP_High_mean,                                   
-                        'Wt_from_GPR_High': wt_GPR_High_mean,
-                        'Wt_from_GPR_Low': wt_GPR_Low_mean,                                
-                        'Wt_to_TRW': wait_time_to_TRW_mean,
-                        'WT_from_EMD':wait_time_from_EMD_mean,
-                        'Perc_with_HOSP_adm': perc_with_HOSP_adm_mean,
-                        'Number with hosp adm EMD':number_with_HOSP_adm_mean, 
-                        'Perc_with_HOSP_adm_HOSP':perc_with_HOSP_adm_mean_HOSP, 
-                        'Number with hosp adm HOSP':number_with_HOSP_adm_mean_HOSP,              
-                        'nr_pat_repl': nr_pat_repl_mean,
-                        'los_ELV_High': los_High_mean,
-                        'los_ELV_Low': los_Low_mean,
-                        'bez_gr_total': bez_gr_Tot_mean,
-                        'bez_gr_High':bez_gr_High_mean,
-                        'bez_gr_Low':bez_gr_Low_mean,    
-                        'bez_gr_TRW': bez_gr_TRW_mean,
-                        'bez_gr_EMDR': bez_gr_EMDR_mean,
-                        'len_w3': len_w3_mean,
-                        'len_w2' : len_w2_list_mean,
-                        'len_w1': len_w1_mean,
-                        'len_w4': len_w4_mean,
-                        'len_wtot': len_wtot_mean,
-                        'serv_level': serv_level_mean,
-                        'Priority': priority,
-                        'Preference': Preference,
-                        'Scen_Full_bed_Sharing' : Scen_shared_beds_Full,
-                        'Scen_partial_bed_Sharing' : Scen_part_bed_Share,
-                        'Scen_NO_bed_Sharing' : Scen_NO_Sharing ,
-                        'Scen_Total_Sharing': Scen_Total_Sharing,                                     
-                        'Number of transfers between Locaties': nr_pat_trans_mean,
-                        'Number of Locaties ELV': n_loc,    
-                        'Number of beds ELV_High': str(n_beds_ELV_High_list),
-                        'Number of beds ELV_Low': str(n_beds_ELV_Low_list),
-                        'Number of beds GRZ':str(n_beds_GRZ_list),
-                        'Number of beds High Complex':str(n_beds_High_Complex_list),
-                        'Number of shared beds': str(n_beds_shared_High_list),
-                        'Number of beds ELV Total':str(n_beds_ELV_total_list),                                     
-                        'Number of TRW beds': str(beds_TRW_list),
-                        'Fairness': max(Fairness_list),
-                                        
-                        })
-                    
+                    'Running_time (sec)': round(time.process_time() - start_time),
+                    'Project':Project,
+                    'Wait_time_ELV_High': wt_ELV_High_mean,
+                    'Wait_time_ELV_Low': wt_ELV_Low_mean,
+                    'Wait_time_ELV_TOT': wt_ELV_TOT_mean,
+                    'Wt_from_HOSP_GRZ': wt_HOSP_GRZ_mean,
+                    'Wt_from_HOSP_High': wt_HOSP_High_mean,                                   
+                    'Wt_from_GPR_High': wt_GPR_High_mean,
+                    'Wt_from_GPR_Low': wt_GPR_Low_mean,                                
+                    'Wt_to_TRW': wait_time_to_TRW_mean,
+                    'WT_from_EMD':wait_time_from_EMD_mean,
+                    'Perc_with_HOSP_adm': perc_with_HOSP_adm_mean,
+                    'Number with hosp adm EMD':number_with_HOSP_adm_mean, 
+                    'Perc_with_HOSP_adm_HOSP':perc_with_HOSP_adm_mean_HOSP, 
+                    'Number with hosp adm HOSP':number_with_HOSP_adm_mean_HOSP,              
+                    'nr_pat_repl': nr_pat_repl_mean,
+                    'los_ELV_High': los_High_mean,
+                    'los_ELV_Low': los_Low_mean,
+                    'bez_gr_total': bez_gr_Tot_mean,
+                    'bez_gr_High':bez_gr_High_mean,
+                    'bez_gr_Low':bez_gr_Low_mean,    
+                    'bez_gr_TRW': bez_gr_TRW_mean,
+                    'bez_gr_EMDR': bez_gr_EMDR_mean,
+                    'len_w3': len_w3_mean,
+                    'len_w2' : len_w2_list_mean,
+                    'len_w1': len_w1_mean,
+                    'len_w4': len_w4_mean,
+                    'len_wtot': len_wtot_mean,
+                    'serv_level': serv_level_mean,
+                    'Priority': priority,
+                    'Preference': Preference,
+                    'Scen_Full_bed_Sharing' : Scen_shared_beds_Full,
+                    'Scen_partial_bed_Sharing' : Scen_part_bed_Share,
+                    'Scen_NO_bed_Sharing' : Scen_NO_Sharing ,
+                    'Scen_Total_Sharing': Scen_Total_Sharing,                                     
+                    'Number of transfers between Locaties': nr_pat_trans_mean,
+                    'Number of Locaties ELV': n_loc,    
+                    'Number of beds ELV_High': str(n_beds_ELV_High_list),
+                    'Number of beds ELV_Low': str(n_beds_ELV_Low_list),
+                    'Number of beds GRZ':str(n_beds_GRZ_list),
+                    'Number of beds High Complex':str(n_beds_High_Complex_list),
+                    'Number of shared beds': str(n_beds_shared_High_list),
+                    'Number of beds ELV Total':str(n_beds_ELV_total_list),                                     
+                    'Number of TRW beds': str(beds_TRW_list),
+                    'Fairness': max(Fairness_list),
+                                    
+                    })
                 
-                if loop_nr == 0:
-                    output_df = output_mean_df_temp
-                    
-                else:
-                    output_df = pd.concat([output_df,output_mean_df_temp])    
-                       
-                    
+            
+            if loop_nr == 0:
+                output_df = output_mean_df_temp
                 
-        #         if loop_nr == 0:
-        #             output_df = output_df_temp
-        #         else:
-        #             output_df = pd.concat([output_df,output_df_temp])
+            else:
+                output_df = pd.concat([output_df,output_mean_df_temp])    
+                   
+                
+            
+    #         if loop_nr == 0:
+    #             output_df = output_df_temp
+    #         else:
+    #             output_df = pd.concat([output_df,output_df_temp])
             
         return output_df, "Succes!"
     
