@@ -6071,12 +6071,12 @@ with col2:
                 Wait_time_GPRHIGH_Totallist.append(np.mean(wait_time_from_GPR_High))
                 Wait_time_GPRLOW_Totallist.append(np.mean(wait_time_from_GPR_Low))
                 Wait_time_TRW_Totallist.append(np.mean(wait_time_to_TRW))
-                w_grz.append(wait_time_from_HOSP_GRZ)
-                w_GPR_h.append(wait_time_from_GPR_High)
-                w_hos_h.append(wait_time_from_HOSP_High)
-                w_EMD.append(wait_time_from_EMD)
-                w_GPR_l.append(wait_time_from_GPR_Low)
-                w_trw.append(wait_time_to_TRW)
+                # w_grz.append(wait_time_from_HOSP_GRZ)
+                # w_GPR_h.append(wait_time_from_GPR_High)
+                # w_hos_h.append(wait_time_from_HOSP_High)
+                # w_EMD.append(wait_time_from_EMD)
+                # w_GPR_l.append(wait_time_from_GPR_Low)
+                # w_trw.append(wait_time_to_TRW)
         
                 
                 
