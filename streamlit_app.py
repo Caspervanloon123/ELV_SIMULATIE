@@ -454,7 +454,7 @@ with col2:
             import bisect
             import time
             #import matplotlib.pyplot as plt
-            import scipy.stats
+            #import scipy.stats
             #import ast
             #import os
             from random import randrange
@@ -1132,13 +1132,13 @@ with col2:
                     event_dict['discharge_' + target_client] = current_time + time_until_placement + exp(serv_Pall_Low)
             
             
-            def make_conf_output(list_input):
+            # def make_conf_output(list_input):
                 
-                mean = round(mean_confidence_interval(list_input)[0],2)
-                lower_bound = round(mean_confidence_interval(list_input)[1],2)
-                upper_bound = round(mean_confidence_interval(list_input)[2],2)
+            #     mean = round(mean_confidence_interval(list_input)[0],2)
+            #     lower_bound = round(mean_confidence_interval(list_input)[1],2)
+            #     upper_bound = round(mean_confidence_interval(list_input)[2],2)
                 
-                return str(mean) + ' (' + str(lower_bound) +',' + str(upper_bound) + ')'
+            #     return str(mean) + ' (' + str(lower_bound) +',' + str(upper_bound) + ')'
             
             def move_to_HOSP(target_client):
                 
@@ -1159,12 +1159,12 @@ with col2:
                 if (target_client in w3_dict.keys() and target_client in output_dict.keys()) or target_client in w3_dict.keys():
                      remove_from_wait_list(w3_dict,target_client,current_time,Fairness_list)
                 
-            def mean_confidence_interval(data, confidence=0.95):
-                a = 1.0 * np.array(data)
-                n = len(a)
-                m, se = np.mean(a), scipy.stats.sem(a)
-                h = se * scipy.stats.t.ppf((1 + confidence) / 2., n-1)
-                return m, m-h, m+h
+            # def mean_confidence_interval(data, confidence=0.95):
+            #     a = 1.0 * np.array(data)
+            #     n = len(a)
+            #     m, se = np.mean(a), scipy.stats.sem(a)
+            #     h = se * scipy.stats.t.ppf((1 + confidence) / 2., n-1)
+            #     return m, m-h, m+h
             
             def Check_space_partial_beds(department):
                 High_list = ['HOS_High', 'GPR_High', 'EMD']
@@ -6254,62 +6254,62 @@ with col2:
             if n_evaluated > 0:
                 
                 #plt.hist(abs_aanw_list)
-                if Project == 'Check MMC High':
-                    wt_ELV_High_final = make_conf_output(wt_to_ELV_High)
+                # if Project == 'Check MMC High':
+                #     wt_ELV_High_final = make_conf_output(wt_to_ELV_High)
         
-                    serv_level_final = make_conf_output(serv_level)
-                    serv_level_mean = mean(serv_level)
-                else:
+                #     serv_level_final = make_conf_output(serv_level)
+                #     serv_level_mean = mean(serv_level)
+                # else:
                     
                 
                 
-                    wt_ELV_High_final = make_conf_output(Wait_time_high_Totallist)
-                    wt_ELV_Low_final = make_conf_output(Wait_time_low_Totallist)
-                    wt_HOSP_GRZ_final = make_conf_output(Wait_time_HOSPGRZ_Totallist)
-                    wt_HOSP_High_final = make_conf_output(Wait_time_HOSPHIGH_Totallist)
-                    wt_GPR_High_final = make_conf_output(Wait_time_GPRHIGH_Totallist)
-                    wt_GPR_Low_final = make_conf_output(wait_time_from_GPR_Low)
-                    wait_time_to_TRW_final = make_conf_output(Wait_time_TRW_Totallist)
-                    wait_time_from_EMD_final = make_conf_output(Wait_time_EMD_Totallist)
-                    if Scen_Total_Sharing != True:
-                        wt_ELV_Tot_final = make_conf_output(wt_to_ELV_High+wait_time_ELV_Low)
-                        wt_ELV_High_final = make_conf_output(Wait_time_high_Totallist)
-                        wt_ELV_Low_final = make_conf_output(Wait_time_low_Totallist)
-                        bez_gr_Low_final = make_conf_output(bez_gr_Low_list)
-                        bez_gr_High_final = make_conf_output(bez_gr_list_High)
-                        los_final = make_conf_output(los_list)
-                        los_Low_final = make_conf_output(los_Low_list)
+                #     wt_ELV_High_final = make_conf_output(Wait_time_high_Totallist)
+                #     wt_ELV_Low_final = make_conf_output(Wait_time_low_Totallist)
+                #     wt_HOSP_GRZ_final = make_conf_output(Wait_time_HOSPGRZ_Totallist)
+                #     wt_HOSP_High_final = make_conf_output(Wait_time_HOSPHIGH_Totallist)
+                #     wt_GPR_High_final = make_conf_output(Wait_time_GPRHIGH_Totallist)
+                #     wt_GPR_Low_final = make_conf_output(wait_time_from_GPR_Low)
+                #     wait_time_to_TRW_final = make_conf_output(Wait_time_TRW_Totallist)
+                #     wait_time_from_EMD_final = make_conf_output(Wait_time_EMD_Totallist)
+                #     if Scen_Total_Sharing != True:
+                #         wt_ELV_Tot_final = make_conf_output(wt_to_ELV_High+wait_time_ELV_Low)
+                #         wt_ELV_High_final = make_conf_output(Wait_time_high_Totallist)
+                #         wt_ELV_Low_final = make_conf_output(Wait_time_low_Totallist)
+                #         bez_gr_Low_final = make_conf_output(bez_gr_Low_list)
+                #         bez_gr_High_final = make_conf_output(bez_gr_list_High)
+                #         los_final = make_conf_output(los_list)
+                #         los_Low_final = make_conf_output(los_Low_list)
         
         
-                    else: 
-                        wt_ELV_Tot_final = make_conf_output(Wait_time_Tot_Totallist)
-                        wt_ELV_High_final = make_conf_output(Wait_time_EMD_Totallist+Wait_time_GPRHIGH_Totallist+Wait_time_HOSPHIGH_Totallist+Wait_time_HOSPGRZ_Totallist)
-                        wt_ELV_Low_final = make_conf_output(Wait_time_low_Totallist)
-                        bez_gr_Low_final = make_conf_output(bez_gr_Low_list)
-                        bez_gr_High_final = make_conf_output(bez_gr_list_High)
-                        los_final = make_conf_output(los_list)
-                        los_Low_final = make_conf_output(los_Low_list)
+                #     else: 
+                #         wt_ELV_Tot_final = make_conf_output(Wait_time_Tot_Totallist)
+                #         wt_ELV_High_final = make_conf_output(Wait_time_EMD_Totallist+Wait_time_GPRHIGH_Totallist+Wait_time_HOSPHIGH_Totallist+Wait_time_HOSPGRZ_Totallist)
+                #         wt_ELV_Low_final = make_conf_output(Wait_time_low_Totallist)
+                #         bez_gr_Low_final = make_conf_output(bez_gr_Low_list)
+                #         bez_gr_High_final = make_conf_output(bez_gr_list_High)
+                #         los_final = make_conf_output(los_list)
+                #         los_Low_final = make_conf_output(los_Low_list)
         
         
-                    perc_with_HOSP_adm_final = make_conf_output(PERCHOSPADMEMD_Totallist)
-                    number_with_HOSP_adm_final = make_conf_output(NRHOSPADMEMD_Totallist)
-                    perc_with_HOSP_adm_final_HOSP = make_conf_output(PERCHOSPADMHOSP_Totallist)
-                    number_with_HOSP_adm_final_HOSP = make_conf_output(NRHOSPADMHOSP_Totallist)
-                    nr_pat_repl_final = make_conf_output(NRPATREPL__Totallist)
+                #     perc_with_HOSP_adm_final = make_conf_output(PERCHOSPADMEMD_Totallist)
+                #     number_with_HOSP_adm_final = make_conf_output(NRHOSPADMEMD_Totallist)
+                #     perc_with_HOSP_adm_final_HOSP = make_conf_output(PERCHOSPADMHOSP_Totallist)
+                #     number_with_HOSP_adm_final_HOSP = make_conf_output(NRHOSPADMHOSP_Totallist)
+                #     nr_pat_repl_final = make_conf_output(NRPATREPL__Totallist)
         
         
-                    bez_gr_final = make_conf_output(bez_gr_list_Total)
-                    bez_gr_Low_final = make_conf_output(bez_gr_Low_list)
-                    bez_gr_High_final = make_conf_output(bez_gr_list_High)
-                    bez_gr_TRW_final = make_conf_output(bez_gr_TRW_list)
-                    bez_gr_EMDR_final = make_conf_output(bez_gr_EMDR_list)
+                #     bez_gr_final = make_conf_output(bez_gr_list_Total)
+                #     bez_gr_Low_final = make_conf_output(bez_gr_Low_list)
+                #     bez_gr_High_final = make_conf_output(bez_gr_list_High)
+                #     bez_gr_TRW_final = make_conf_output(bez_gr_TRW_list)
+                #     bez_gr_EMDR_final = make_conf_output(bez_gr_EMDR_list)
         
-                    len_w3_final = make_conf_output(len_w3_list)
-                    len_w2_final = make_conf_output(len_w2_list)
-                    len_w1_final = make_conf_output(len_w1_list)
-                    len_w4_final = make_conf_output(len_w4_list)
+                #     len_w3_final = make_conf_output(len_w3_list)
+                #     len_w2_final = make_conf_output(len_w2_list)
+                #     len_w1_final = make_conf_output(len_w1_list)
+                #     len_w4_final = make_conf_output(len_w4_list)
         
-                    serv_level_final = make_conf_output(SERVLEVEL_Totallist)
+                #     serv_level_final = make_conf_output(SERVLEVEL_Totallist)
         
                     #means
         
